@@ -1,0 +1,413 @@
+.heroSection {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-top: calc(var(--header-height) + 3rem);
+  padding-bottom: 5rem;
+  overflow: hidden;
+}
+
+.heroContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 4rem;
+}
+
+/* Top Row: Profile Avatar (Left) and Terminal Card (Right) */
+.topRow {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: flex-start;
+  gap: 6rem;
+  width: 100%;
+}
+
+.profileArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-top: 2rem;
+}
+
+.profileImageContainer {
+  margin-bottom: 2rem;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.profileImage {
+  border-radius: 50%;
+  border: 4px solid rgba(139, 92, 246, 0.4);
+  box-shadow: 0 0 35px rgba(139, 92, 246, 0.3);
+  object-fit: cover;
+  transition: var(--transition-normal);
+}
+
+.profileImage:hover {
+  transform: scale(1.05);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 45px rgba(139, 92, 246, 0.55);
+}
+
+.greetingBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 9999px;
+  background: rgba(139, 92, 246, 0.08);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+  letter-spacing: 0.5px;
+}
+
+.badgePulse {
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent-cyan);
+  border-radius: 50%;
+  animation: pulseGlow 1.5s infinite;
+}
+
+/* Hero Visual: Terminal Card */
+.heroVisual {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  position: relative;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.heroVisual::before {
+  content: "";
+  position: absolute;
+  width: 110%;
+  height: 110%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, transparent 70%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.terminalMockup {
+  width: 100%;
+  max-width: 550px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  box-shadow: var(--glass-shadow), 0 20px 45px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  overflow: hidden;
+  transition: var(--transition-normal);
+}
+
+.terminalMockup:hover {
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--glass-shadow), 0 25px 50px rgba(139, 92, 246, 0.15);
+}
+
+.terminalHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 1.25rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.terminalButton {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.terminalTitle {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-left: auto;
+}
+
+.terminalBody {
+  padding: 1.5rem 1.5rem;
+}
+
+.codeBlock {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  white-space: pre-wrap;
+}
+
+/* Bottom Content: Center Intro & Buttons */
+.bottomContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.title {
+  font-size: 5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  letter-spacing: -1.5px;
+  white-space: nowrap;
+}
+
+.highlightText {
+  background: var(--accent-gradient-2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Subtitle with Side Fading Lines */
+.subtitleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.subtitle {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+}
+
+.subtitleLine {
+  flex-grow: 1;
+  max-width: 160px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.4), transparent);
+}
+
+.description {
+  font-size: 1.3rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  max-width: 950px;
+  margin-bottom: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.ctaGroup {
+  display: flex;
+  gap: 1.5rem; /* 24px spacing */
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Mobile Social Icons styling (under CTA on mobile screens) */
+.mobileSocials {
+  display: none;
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+
+.mobileSocialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: var(--text-secondary);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  transition: var(--transition-normal);
+}
+
+.mobileSocialLink:hover {
+  color: var(--accent-hover);
+  border-color: var(--accent-hover);
+  background: rgba(255, 255, 255, 0.03);
+  transform: translateY(-2px);
+}
+
+/* Animations */
+@keyframes pulseGlow {
+  0% { transform: scale(1); opacity: 0.8; box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.4); }
+  70% { transform: scale(1.15); opacity: 1; box-shadow: 0 0 0 8px rgba(6, 182, 212, 0); }
+  100% { transform: scale(1); opacity: 0.8; box-shadow: 0 0 0 0 rgba(6, 182, 212, 0); }
+}
+
+/* Syntax Highlight Colors */
+.codeKeyword { color: #f43f5e; }
+.codeVariable { color: #3b82f6; }
+.codeString { color: #10b981; }
+.codeBoolean { color: #f59e0b; }
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .topRow {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    justify-items: center;
+  }
+
+  .profileArea {
+    padding-top: 0;
+  }
+
+  .heroVisual {
+    justify-content: center;
+    margin-top: 0;
+  }
+
+  .terminalMockup {
+    max-width: 480px;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroSection {
+    padding-top: calc(var(--header-height) + 1rem);
+  }
+
+  .title {
+    font-size: 3rem;
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  .subtitleContainer {
+    gap: 0;
+  }
+
+  .subtitle {
+    font-size: 1.75rem;
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  .subtitleLine {
+    display: none;
+  }
+
+  .description {
+    font-size: 1.1rem;
+    max-width: 100%;
+  }
+
+  .mobileSocials {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 2.35rem;
+  }
+  
+  .ctaGroup {
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+  }
+
+  .ctaGroup a {
+    width: 100%;
+  }
+}
+
+/* Lightbox Overlay Styles */
+.lightboxOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(3, 3, 3, 0.9);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  cursor: zoom-out;
+  animation: fadeIn 0.25s ease-out;
+}
+
+.lightboxContent {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: scaleIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: default;
+}
+
+.zoomedImage {
+  border-radius: 16px;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 20px 50px rgba(139, 92, 246, 0.25);
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.closeButton {
+  position: absolute;
+  top: -45px;
+  right: 0;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 2.5rem;
+  font-weight: 300;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  line-height: 1;
+}
+
+.closeButton:hover {
+  color: var(--accent-primary);
+  transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Responsive adjustment for zoomed image */
+@media (max-width: 768px) {
+  .zoomedImage {
+    max-width: 280px;
+    max-height: 280px;
+  }
+  .closeButton {
+    top: -40px;
+    right: 10px;
+  }
+}

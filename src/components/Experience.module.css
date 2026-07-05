@@ -1,0 +1,162 @@
+.experienceContainer {
+  position: relative;
+  max-width: 800px;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 2.5rem;
+  margin-top: 4rem;
+}
+
+/* Timeline central line */
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 6px;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--accent-primary) 0%, var(--glass-border) 80%, rgba(255, 255, 255, 0) 100%);
+}
+
+.timelineItem {
+  position: relative;
+  margin-bottom: 4rem;
+}
+
+.timelineItem:last-child {
+  margin-bottom: 0;
+}
+
+.timelineDot {
+  position: absolute;
+  left: -2.5rem;
+  top: 6px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: var(--bg-primary);
+  border: 3px solid var(--accent-primary);
+  box-shadow: 0 0 10px var(--accent-primary);
+  z-index: 2;
+  transition: var(--transition-normal);
+}
+
+.timelineItem:hover .timelineDot {
+  background-color: var(--accent-primary);
+  transform: scale(1.2);
+  box-shadow: 0 0 15px var(--accent-primary), 0 0 25px var(--accent-primary);
+}
+
+.timelineContent {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 1.75rem 2rem;
+  box-shadow: var(--glass-shadow);
+  transition: var(--transition-normal);
+}
+
+.timelineItem:hover .timelineContent {
+  border-color: var(--glass-border-hover);
+  background: var(--glass-bg-hover);
+  transform: translateX(6px);
+  box-shadow: 0 10px 30px rgba(139, 92, 246, 0.08);
+}
+
+.timelineHeaderBlock {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.timelineYear {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+  background: rgba(139, 92, 246, 0.08);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  display: inline-block;
+  letter-spacing: 0.5px;
+}
+
+.timelineMeta {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.timelineSkills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+
+.skillBadge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  transition: var(--transition-fast);
+}
+
+.skillBadge:hover {
+  background: rgba(139, 92, 246, 0.1);
+  border-color: rgba(139, 92, 246, 0.4);
+  color: var(--text-primary);
+}
+
+.timelineRole {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.2px;
+}
+
+.timelineCompany {
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.timelineDesc {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+  .timeline {
+    padding-left: 1.75rem;
+  }
+  .timeline::before {
+    left: 4px;
+  }
+  .timelineDot {
+    left: -1.75rem;
+    width: 10px;
+    height: 10px;
+    border-width: 2px;
+    top: 8px;
+  }
+  .timelineContent {
+    padding: 1.25rem 1.5rem;
+  }
+  .timelineRole {
+    font-size: 1.15rem;
+  }
+}

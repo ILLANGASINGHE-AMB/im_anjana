@@ -1,0 +1,95 @@
+.socialBar {
+  position: fixed;
+  bottom: 0;
+  left: 40px;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.socialList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style: none;
+  gap: 1.5rem;
+  padding: 0;
+  margin: 0;
+}
+
+.socialItem {
+  position: relative;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: var(--text-secondary);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  transition: var(--transition-normal);
+}
+
+.socialLink:hover {
+  color: var(--accent-hover);
+  border-color: var(--accent-hover);
+  background: rgba(255, 255, 255, 0.03);
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Tooltip */
+.tooltip {
+  position: absolute;
+  left: 55px;
+  top: 50%;
+  transform: translateY(-50%) translateX(-10px);
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border: 1px solid var(--glass-border);
+  opacity: 0;
+  pointer-events: none;
+  transition: var(--transition-normal);
+  white-space: nowrap;
+}
+
+.tooltip::before {
+  content: "";
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent var(--bg-tertiary) transparent transparent;
+}
+
+.socialLink:hover .tooltip {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+.verticalLine {
+  width: 1px;
+  height: 120px;
+  background: linear-gradient(to bottom, var(--glass-border) 0%, rgba(255, 255, 255, 0) 100%);
+  margin-top: 0.5rem;
+}
+
+/* Mobile responsive - hide floating bar on smaller screens */
+@media (max-width: 1024px) {
+  .socialBar {
+    display: none;
+  }
+}

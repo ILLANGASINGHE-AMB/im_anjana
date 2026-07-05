@@ -1,0 +1,102 @@
+.loaderOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.6s;
+  opacity: 1;
+  visibility: visible;
+}
+
+.loaderOverlay::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 10% 90%, rgba(6, 182, 212, 0.04) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.fadeOut {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loaderContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 450px;
+  text-align: center;
+}
+
+.logoBracket {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--accent-primary);
+  margin-bottom: 2rem;
+  animation: glowPulse 2s infinite alternate;
+  letter-spacing: -0.5px;
+}
+
+.loadingText {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.5px;
+}
+
+.progressContainer {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+  border: 1px solid var(--border-muted);
+}
+
+.progressBar {
+  height: 100%;
+  background: var(--accent-gradient-rainbow);
+  background-size: 200% 100%;
+  border-radius: 99px;
+  box-shadow: 0 0 10px var(--accent-primary);
+  transition: width 0.03s linear;
+  animation: shimmerFlow 3s linear infinite;
+}
+
+.percentage {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  letter-spacing: 1px;
+}
+
+@keyframes glowPulse {
+  from {
+    text-shadow: 0 0 5px rgba(139, 92, 246, 0.3);
+  }
+  to {
+    text-shadow: 0 0 20px rgba(139, 92, 246, 0.8), 0 0 30px rgba(6, 182, 212, 0.5);
+  }
+}
+
+@keyframes shimmerFlow {
+  0% { background-position: 0% 50% }
+  100% { background-position: 200% 50% }
+}
