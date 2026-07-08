@@ -9,6 +9,9 @@ export default function Loader() {
   const [isFadingOut, setIsFadingOut] = useState(false);
 
   useEffect(() => {
+    // Disable scrolling while loading screen is active
+    document.body.style.overflow = "hidden";
+
     if (typeof window !== "undefined") {
       if ("scrollRestoration" in window.history) {
         window.history.scrollRestoration = "manual";
@@ -42,13 +45,28 @@ export default function Loader() {
 
     timer = setTimeout(updateProgress, 30);
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      // Re-enable scrolling when loader is removed
+      document.body.style.overflow = "";
+    };
   }, []);
 
   if (!shouldRender) return null;
 
   return (
-    <div className={`${styles.loaderOverlay} ${isFadingOut ? styles.fadeOut : ""}`}>
+    <div 
+      className={`${styles.loaderOverlay} ${isFadingOut ? styles.fadeOut : ""}`}
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100vw",
+        height: "100vh",
+        backgroundColor: "#08070d", // Solid fallback color to prevent FOUC content peeking
+        zIndex: 99999,
+      }}
+    >
       <div className={styles.loaderContent}>
         <div className={styles.logoBracket}>&lt;AJN/&gt;</div>
 
