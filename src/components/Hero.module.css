@@ -171,9 +171,17 @@
 }
 
 .highlightText {
-  background: var(--accent-gradient-2);
+  background: var(--accent-gradient-rainbow);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: shimmer 6s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 0% center; }
+  50%  { background-position: 100% center; }
+  100% { background-position: 0% center; }
 }
 
 /* Subtitle with Side Fading Lines */
@@ -410,4 +418,14 @@
     top: -40px;
     right: 10px;
   }
+}
+
+.cursorBlink {
+  animation: blink 1s step-end infinite;
+  color: var(--accent-primary);
+  font-weight: bold;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
 }

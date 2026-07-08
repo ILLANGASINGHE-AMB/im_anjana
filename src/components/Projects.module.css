@@ -15,9 +15,9 @@
 }
 
 .projectCard {
-  overflow: hidden;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .imageWrapper {
@@ -26,6 +26,8 @@
   aspect-ratio: 16 / 10;
   overflow: hidden;
   border-bottom: 1px solid var(--glass-border);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 }
 
 .projectImage {
@@ -177,4 +179,68 @@
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   display: inline-block;
+}
+
+@property --glow-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: true;
+}
+
+.projectCard::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 16px;
+  padding: 2px;
+  background: conic-gradient(
+    from var(--glow-angle),
+    transparent 20%,
+    var(--accent-primary) 40%,
+    var(--accent-cyan) 60%,
+    transparent 80%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: rotateGlowAngle 3s linear infinite;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.projectCard::after {
+  content: "";
+  position: absolute;
+  --current-angle: calc(var(--glow-angle) + 126deg);
+  --cos-val: cos(var(--current-angle));
+  --sin-val: sin(var(--current-angle));
+  --max-val: max(abs(var(--cos-val)), abs(var(--sin-val)));
+  left: calc(50% + (var(--cos-val) / var(--max-val)) * (50% + 2px));
+  top: calc(50% + (var(--sin-val) / var(--max-val)) * (50% + 2px));
+  width: 8px;
+  height: 8px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: var(--accent-cyan);
+  box-shadow: 0 0 8px var(--accent-cyan), 0 0 16px var(--accent-cyan);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+  z-index: 2;
+  pointer-events: none;
+  animation: rotateGlowAngle 3s linear infinite;
+}
+
+.projectCard:hover::before,
+.projectCard:hover::after {
+  opacity: 0.9;
+}
+
+@keyframes rotateGlowAngle {
+  to {
+    --glow-angle: 360deg;
+  }
 }

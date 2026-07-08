@@ -17,7 +17,7 @@
   left: 6px;
   width: 2px;
   height: 100%;
-  background: linear-gradient(to bottom, var(--accent-primary) 0%, var(--glass-border) 80%, rgba(255, 255, 255, 0) 100%);
+  background: var(--border-muted);
 }
 
 .timelineItem {
@@ -146,6 +146,9 @@
   .timeline::before {
     left: 4px;
   }
+  .timelineLine {
+    left: 4px;
+  }
   .timelineDot {
     left: -1.75rem;
     width: 10px;
@@ -159,4 +162,14 @@
   .timelineRole {
     font-size: 1.15rem;
   }
+}
+
+.timelineLine {
+  position: absolute;
+  left: 6px;
+  top: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent-primary) 0%, var(--accent-cyan) 100%);
+  transition: height 0.1s ease-out;
+  z-index: 1;
 }

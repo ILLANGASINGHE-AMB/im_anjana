@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
+import Reveal from "./Reveal";
 import styles from "./Experience.module.css";
 
 interface TimelineItem {
@@ -13,6 +15,26 @@ interface TimelineItem {
 }
 
 export default function Experience() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [lineProgress, setLineProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const el = sectionRef.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const viewportH = window.innerHeight;
+      const total = rect.height;
+      // Start growing when the top of the timeline is in the lower 80% of the viewport
+      const offset = viewportH * 0.8;
+      const scrolled = Math.min(Math.max(offset - rect.top, 0), total);
+      setLineProgress((scrolled / total) * 100);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const items: TimelineItem[] = [
     {
       year: "September 2024 – Present",
@@ -49,30 +71,33 @@ export default function Experience() {
       <div className={`${styles.experienceContainer} container`}>
         <h2 className="section-title">My Journey</h2>
         
-        <div className={styles.timeline}>
+        <div ref={sectionRef} className={styles.timeline}>
+          <div className={styles.timelineLine} style={{ height: `${lineProgress}%` }} />
           {items.map((item, idx) => (
-            <div key={idx} className={styles.timelineItem} id={`timeline-item-${idx}`}>
-              <div className={styles.timelineDot}></div>
-              <div className={styles.timelineContent}>
-                <div className={styles.timelineHeaderBlock}>
-                  <span className={styles.timelineYear}>{item.year}</span>
-                  <span className={styles.timelineMeta}>
-                    {item.employmentType} &bull; {item.workMode}
-                  </span>
-                </div>
-                <h3 className={styles.timelineRole}>
-                  {item.role} <span className={styles.timelineCompany}>@ {item.company}</span>
-                </h3>
-                <p className={styles.timelineDesc}>{item.description}</p>
-                <div className={styles.timelineSkills}>
-                  {item.skills.map((skill, sIdx) => (
-                    <span key={sIdx} className={styles.skillBadge}>
-                      {skill}
+            <Reveal key={idx} delay={idx * 0.15}>
+              <div className={styles.timelineItem} id={`timeline-item-${idx}`}>
+                <div className={styles.timelineDot}></div>
+                <div className={styles.timelineContent}>
+                  <div className={styles.timelineHeaderBlock}>
+                    <span className={styles.timelineYear}>{item.year}</span>
+                    <span className={styles.timelineMeta}>
+                      {item.employmentType} &bull; {item.workMode}
                     </span>
-                  ))}
+                  </div>
+                  <h3 className={styles.timelineRole}>
+                    {item.role} <span className={styles.timelineCompany}>@ {item.company}</span>
+                  </h3>
+                  <p className={styles.timelineDesc}>{item.description}</p>
+                  <div className={styles.timelineSkills}>
+                    {item.skills.map((skill, sIdx) => (
+                      <span key={sIdx} className={styles.skillBadge}>
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

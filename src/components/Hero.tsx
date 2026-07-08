@@ -1,11 +1,55 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import styles from "./Hero.module.css";
 
+function useTypewriter(lines: string[], speed = 20) {
+  const [output, setOutput] = useState("");
+  const full = lines.join("\n");
+  useEffect(() => {
+    let i = 0;
+    const interval = setInterval(() => {
+      i++;
+      setOutput(full.slice(0, i));
+      if (i >= full.length) clearInterval(interval);
+    }, speed);
+    return () => clearInterval(interval);
+  }, [full, speed]);
+  return output;
+}
+
+function useMagnetic() {
+  const ref = useRef<HTMLAnchorElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    el.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px)`;
+  };
+
+  const handleMouseLeave = () => {
+    if (ref.current) ref.current.style.transform = "translate(0, 0)";
+  };
+
+  return { ref, handleMouseMove, handleMouseLeave };
+}
+
 export default function Hero() {
   const [isZoomed, setIsZoomed] = useState(false);
+  const magneticWork = useMagnetic();
+  const magneticContact = useMagnetic();
+
+  const typed = useTypewriter([
+    "const developer = {",
+    "  name: \"Anjana\",",
+    "  role: \"Full-Stack Developer\",",
+    "  passion: \"Building modern web applications with AI-powered tools\"",
+    "};"
+  ], 20);
 
   const socials = [
     {
@@ -90,15 +134,8 @@ export default function Hero() {
               <div className={styles.terminalBody}>
                 <pre className={styles.codeBlock}>
                   <code>
-                    <span className={styles.codeKeyword}>const</span> <span className={styles.codeVariable}>developer</span> = &#123;
-                    <br />
-                    &nbsp;&nbsp;name: <span className={styles.codeString}>&quot;Anjana&quot;</span>,
-                    <br />
-                    &nbsp;&nbsp;role: <span className={styles.codeString}>&quot;Full-Stack Developer&quot;</span>,
-                    <br />
-                    &nbsp;&nbsp;passion: <span className={styles.codeString}>&quot;Building modern web applications with AI-powered tools&quot;</span>
-                    <br />
-                    &#125;;
+                    {typed}
+                    <span className={styles.cursorBlink}>█</span>
                   </code>
                 </pre>
               </div>
@@ -125,14 +162,30 @@ export default function Hero() {
           </p>
 
           <div className={styles.ctaGroup}>
-            <a href="#industry-projects" className="btn btn-primary" id="hero-view-work-btn">
+            <a
+              ref={magneticWork.ref}
+              onMouseMove={magneticWork.handleMouseMove}
+              onMouseLeave={magneticWork.handleMouseLeave}
+              href="#industry-projects"
+              className="btn btn-primary"
+              id="hero-view-work-btn"
+              style={{ transition: "transform 0.15s ease" }}
+            >
               View My Work
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
               </svg>
             </a>
-            <a href="#contact" className="btn btn-secondary" id="hero-contact-btn">
+            <a
+              ref={magneticContact.ref}
+              onMouseMove={magneticContact.handleMouseMove}
+              onMouseLeave={magneticContact.handleMouseLeave}
+              href="#contact"
+              className="btn btn-secondary"
+              id="hero-contact-btn"
+              style={{ transition: "transform 0.15s ease" }}
+            >
               Get In Touch
             </a>
           </div>

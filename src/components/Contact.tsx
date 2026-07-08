@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import styles from "./Contact.module.css";
+import Reveal from "./Reveal";
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -63,105 +64,107 @@ export default function Contact() {
       <div className={`${styles.contactContainer} container`}>
         <h2 className="section-title">Get In Touch</h2>
 
-        <div className={`${styles.contactCard} glass-card`}>
-          <div className={styles.contactInfo}>
-            <h3 className={styles.contactSubtitle}>Let&apos;s create something legendary.</h3>
-            <p className={styles.contactText}>
-              Have a project in mind, want to collaborate, or just want to say hi?
-              Drop me a message and I&apos;ll get back to you as soon as possible.
-            </p>
-            <div className={styles.directLinks}>
-              <div className={styles.linkItem}>
-                <span className={styles.linkIcon}>
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                    <polyline points="22,6 12,13 2,6"></polyline>
-                  </svg>
-                </span>
-                <span className={styles.linkValue}>anjanamalith2004@gmail.com</span>
+        <Reveal>
+          <div className={`${styles.contactCard} glass-card`}>
+            <div className={styles.contactInfo}>
+              <h3 className={styles.contactSubtitle}>Let&apos;s create something legendary.</h3>
+              <p className={styles.contactText}>
+                Have a project in mind, want to collaborate, or just want to say hi?
+                Drop me a message and I&apos;ll get back to you as soon as possible.
+              </p>
+              <div className={styles.directLinks}>
+                <div className={styles.linkItem}>
+                  <span className={styles.linkIcon}>
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                      <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                  </span>
+                  <span className={styles.linkValue}>anjanamalith2004@gmail.com</span>
+                </div>
+                <div className={styles.linkItem}>
+                  <span className={styles.linkIcon}>
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                  </span>
+                  <span className={styles.linkValue}>Colombo, Sri Lanka</span>
+                </div>
               </div>
-              <div className={styles.linkItem}>
-                <span className={styles.linkIcon}>
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                    <circle cx="12" cy="10" r="3"></circle>
-                  </svg>
-                </span>
-                <span className={styles.linkValue}>Colombo, Sri Lanka</span>
-              </div>
-            </div>
-          </div>
-
-          <form onSubmit={handleSubmit} className={styles.contactForm} noValidate>
-            <div className={styles.formGroup}>
-              <label htmlFor="form-name" className={styles.formLabel}>Name</label>
-              <input
-                type="text"
-                id="form-name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                placeholder="John Doe"
-                className={styles.formInput}
-                required
-              />
-            </div>
-            <div className={styles.formGroup}>
-              <label htmlFor="form-email" className={styles.formLabel}>Email</label>
-              <input
-                type="email"
-                id="form-email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="john@example.com"
-                className={styles.formInput}
-                required
-              />
-            </div>
-            <div className={styles.formGroup}>
-              <label htmlFor="form-message" className={styles.formLabel}>Message</label>
-              <textarea
-                id="form-message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                placeholder="Describe your project or ideas..."
-                rows={5}
-                className={styles.formInput}
-                required
-              ></textarea>
             </div>
 
-            {statusMsg && (
-              <div className={`${styles.statusMessage} ${statusType === "success" ? styles.statusSuccess : styles.statusError}`}>
-                {statusMsg}
+            <form onSubmit={handleSubmit} className={styles.contactForm} noValidate>
+              <div className={styles.formGroup}>
+                <label htmlFor="form-name" className={styles.formLabel}>Name</label>
+                <input
+                  type="text"
+                  id="form-name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="John Doe"
+                  className={styles.formInput}
+                  required
+                />
               </div>
-            )}
+              <div className={styles.formGroup}>
+                <label htmlFor="form-email" className={styles.formLabel}>Email</label>
+                <input
+                  type="email"
+                  id="form-email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="john@example.com"
+                  className={styles.formInput}
+                  required
+                />
+              </div>
+              <div className={styles.formGroup}>
+                <label htmlFor="form-message" className={styles.formLabel}>Message</label>
+                <textarea
+                  id="form-message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="Describe your project or ideas..."
+                  rows={5}
+                  className={styles.formInput}
+                  required
+                ></textarea>
+              </div>
 
-            <button
-              type="submit"
-              className={`${styles.submitBtn} btn btn-primary`}
-              disabled={isSubmitting}
-              id="form-submit-btn"
-            >
-              {isSubmitting ? (
-                <>
-                  <span className={styles.loader}></span>
-                  Sending...
-                </>
-              ) : (
-                <>
-                  Send Message
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="22" y1="2" x2="11" y2="13"></line>
-                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                  </svg>
-                </>
+              {statusMsg && (
+                <div className={`${styles.statusMessage} ${statusType === "success" ? styles.statusSuccess : styles.statusError}`}>
+                  {statusMsg}
+                </div>
               )}
-            </button>
-          </form>
-        </div>
+
+              <button
+                type="submit"
+                className={`${styles.submitBtn} btn btn-primary`}
+                disabled={isSubmitting}
+                id="form-submit-btn"
+              >
+                {isSubmitting ? (
+                  <>
+                    <span className={styles.loader}></span>
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    Send Message
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="22" y1="2" x2="11" y2="13"></line>
+                      <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                  </>
+                )}
+              </button>
+            </form>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
