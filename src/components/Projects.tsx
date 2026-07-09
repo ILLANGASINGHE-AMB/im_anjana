@@ -49,6 +49,14 @@ interface ProjectsProps {
 export default function Projects({ type }: ProjectsProps) {
   const featuredProjects: Project[] = [
     {
+      title: "නිර්නාම (Nirnama)",
+      description: "A fully anonymous, real-time message board where users can share thoughts in Sinhala and English under a cozy vintage typewriter theme. Built serverless with React and Supabase, it features grapheme-aware character counting (using browser-native Intl.Segmenter) for correct Sinhala Unicode boundary measurement, database-level security (RLS) policies, and client-side anti-spam gating.",
+      image: "/nirnaama.png",
+      tags: ["React (Vite)", "Tailwind CSS v4", "Supabase", "PostgreSQL RLS", "Real-time DB"],
+      githubUrl: "https://github.com/ILLANGASINGHE-AMB/Quoter.git",
+      liveUrl: "https://nirnaama.netlify.app",
+    },
+    {
       title: "CampusConnect - Club & Event Manager",
       description: "A collaborative C# WPF desktop application developed by #TeamFreeWill to simplify university club, student membership, and event registration tracking. Integrates local SQLite data seeding, QR code ticket scanning, and PDF reports.",
       image: "/CC.png",
