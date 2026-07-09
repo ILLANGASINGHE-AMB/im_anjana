@@ -86,11 +86,54 @@
   flex-grow: 1;
 }
 
+.projectHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
 .projectTitle {
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 1rem;
+  margin: 0;
+}
+
+.projectDate {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  box-shadow: var(--glass-shadow);
+  margin-top: 0.2rem;
+  transition: var(--transition-normal);
+}
+
+.projectCard:hover .projectDate {
+  border-color: rgba(139, 92, 246, 0.3);
+  background: rgba(139, 92, 246, 0.03);
+  color: var(--text-primary);
+}
+
+@media (max-width: 480px) {
+  .projectHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .projectDate {
+    margin-top: 0;
+  }
 }
 
 .projectDescription {

@@ -40,6 +40,7 @@ interface Project {
   tags: string[];
   githubUrl: string;
   liveUrl: string;
+  date?: string;
 }
 
 interface ProjectsProps {
@@ -55,6 +56,7 @@ export default function Projects({ type }: ProjectsProps) {
       tags: ["React (Vite)", "Tailwind CSS v4", "Supabase", "PostgreSQL RLS", "Real-time DB"],
       githubUrl: "https://github.com/ILLANGASINGHE-AMB/Quoter.git",
       liveUrl: "https://nirnaama.netlify.app",
+      date: "Jul 9, 2026",
     },
     {
       title: "CampusConnect - Club & Event Manager",
@@ -63,6 +65,7 @@ export default function Projects({ type }: ProjectsProps) {
       tags: ["C#", ".NET 10 (WPF)", "SQLite", "QuestPDF", "MVVM"],
       githubUrl: "https://github.com/ILLANGASINGHE-AMB/CampusConnect.git",
       liveUrl: "https://github.com/ILLANGASINGHE-AMB/CampusConnect.git",
+      date: "May 23, 2026",
     },
     {
       title: "HeLLL 3D - Voxel Model Generator",
@@ -71,6 +74,7 @@ export default function Projects({ type }: ProjectsProps) {
       tags: ["AI Web App", "Google Gemini API", "Vite", "TypeScript", "Google AI Studio"],
       githubUrl: "https://github.com/ILLANGASINGHE-AMB/Helll_3DModel",
       liveUrl: "https://github.com/ILLANGASINGHE-AMB/Helll_3DModel",
+      date: "Dec 20, 2025",
     },
     {
       title: "Renewly - Subscription Manager",
@@ -79,6 +83,7 @@ export default function Projects({ type }: ProjectsProps) {
       tags: ["Flutter", "Dart", "Local Storage", "Git & GitHub"],
       githubUrl: "https://github.com/ILLANGASINGHE-AMB/Renewly_App",
       liveUrl: "https://github.com/ILLANGASINGHE-AMB/Renewly_App",
+      date: "Dec 19, 2025",
     },
     {
       title: "Sagacious Ice Factory IMS",
@@ -87,6 +92,7 @@ export default function Projects({ type }: ProjectsProps) {
       tags: ["Java", "Java Swing", "OOP Principles", "File Handling"],
       githubUrl: "https://github.com/ILLANGASINGHE-AMB/OOP_Project_TFW2.2.git",
       liveUrl: "https://github.com/ILLANGASINGHE-AMB/OOP_Project_TFW2.2.git",
+      date: "Nov 24, 2025",
     },
     {
       title: "MesCalc - Instrument Simulator",
@@ -95,6 +101,7 @@ export default function Projects({ type }: ProjectsProps) {
       tags: ["C Programming", "Console UI", "Standard C Libraries"],
       githubUrl: "https://github.com/ILLANGASINGHE-AMB/MesCalc---Measurement-Instrument-Simulator-in-C.git",
       liveUrl: "https://github.com/ILLANGASINGHE-AMB/MesCalc---Measurement-Instrument-Simulator-in-C.git",
+      date: "Jul 12, 2025",
     },
     {
       title: "Simple Glass Calculator",
@@ -103,6 +110,7 @@ export default function Projects({ type }: ProjectsProps) {
       tags: ["HTML5", "CSS3 (Glassmorphism)", "JavaScript"],
       githubUrl: "https://github.com/ILLANGASINGHE-AMB/simpleCalc.git",
       liveUrl: "/projects/simple%20calculator/simplecalulator.html",
+      date: "Jul 12, 2025",
     },
   ];
 
@@ -194,7 +202,29 @@ export default function Projects({ type }: ProjectsProps) {
                   </div>
                 </div>
                 <div className={styles.projectInfo}>
-                  <h3 className={styles.projectTitle}>{project.title}</h3>
+                  <div className={styles.projectHeader}>
+                    <h3 className={styles.projectTitle}>{project.title}</h3>
+                    {project.date && (
+                      <span className={styles.projectDate}>
+                        <svg
+                          viewBox="0 0 24 24"
+                          width="12"
+                          height="12"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                          <line x1="16" y1="2" x2="16" y2="6"></line>
+                          <line x1="8" y1="2" x2="8" y2="6"></line>
+                          <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        {project.date}
+                      </span>
+                    )}
+                  </div>
                   <p className={styles.projectDescription}>{project.description}</p>
                   <div className={styles.tagsContainer}>
                     {project.tags.map((tag, tIdx) => (

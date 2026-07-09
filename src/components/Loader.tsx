@@ -55,7 +55,7 @@ export default function Loader() {
   if (!shouldRender) return null;
 
   return (
-    <div 
+    <div
       className={`${styles.loaderOverlay} ${isFadingOut ? styles.fadeOut : ""}`}
       style={{
         position: "fixed",
@@ -68,7 +68,7 @@ export default function Loader() {
       }}
     >
       <div className={styles.loaderContent}>
-        <div className={styles.logoBracket}>&lt;AJN/&gt;</div>
+        <div className={styles.logoBracket}>&lt;ANJANA/&gt;</div>
 
         <h2 className={styles.loadingText}>
           Loading into Ilangasinghe.Jr&apos;s Portfolio
