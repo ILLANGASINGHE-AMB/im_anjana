@@ -109,7 +109,7 @@ export default function Hero() {
               title="Click to zoom"
             >
               <Image
-                src="/profile_picture.jpg"
+                src="/newPfP.jpeg"
                 alt="Anjana Profile Picture"
                 width={150}
                 height={150}
@@ -214,7 +214,7 @@ export default function Hero() {
         <div className={styles.lightboxOverlay} onClick={() => setIsZoomed(false)}>
           <div className={styles.lightboxContent} onClick={(e) => e.stopPropagation()}>
             <Image
-              src="/profile_picture.jpg"
+              src="/newPfP.jpeg"
               alt="Anjana Profile Picture Zoomed"
               width={400}
               height={400}
