@@ -16,8 +16,8 @@ const mono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: "Anjana | Developer Portfolio",
-  description: "Personal website and portfolio of Anjana. Explore projects, engineering skills, professional experience, and connections to GitHub, LinkedIn, Reddit, and Instagram.",
-  keywords: ["Anjana", "Portfolio", "Software Engineer", "Web Developer", "Next.js", "React", "TypeScript", "Vercel"],
+  description: "Personal website and portfolio of Anjana. Explore projects, engineering skills, professional experience, and connections to GitHub, LinkedIn, Reddit, Instagram, and WhatsApp.",
+  keywords: ["Anjana", "Portfolio", "Software Engineer", "Web Developer", "Next.js", "React", "TypeScript", "Vercel", "WhatsApp"],
   authors: [{ name: "Anjana" }],
   openGraph: {
     title: "Anjana | Portfolio",

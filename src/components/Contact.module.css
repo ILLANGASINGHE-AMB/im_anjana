@@ -46,6 +46,20 @@
   gap: 1rem;
 }
 
+a.linkItem {
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+a.linkItem:hover .linkValue {
+  color: var(--text-primary);
+}
+
+a.linkItem:hover .linkIcon {
+  border-color: var(--accent-primary);
+  background: rgba(139, 92, 246, 0.15);
+}
+
 .linkIcon {
   display: flex;
   align-items: center;

@@ -73,7 +73,7 @@ export default function Contact() {
                 Drop me a message and I&apos;ll get back to you as soon as possible.
               </p>
               <div className={styles.directLinks}>
-                <div className={styles.linkItem}>
+                <a href="mailto:anjanamalith2004@gmail.com" className={styles.linkItem}>
                   <span className={styles.linkIcon}>
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
@@ -81,7 +81,15 @@ export default function Contact() {
                     </svg>
                   </span>
                   <span className={styles.linkValue}>anjanamalith2004@gmail.com</span>
-                </div>
+                </a>
+                <a href="https://wa.me/94712016859" target="_blank" rel="noopener noreferrer" className={styles.linkItem}>
+                  <span className={styles.linkIcon} style={{ color: "#25d366", borderColor: "rgba(37, 211, 102, 0.3)", background: "rgba(37, 211, 102, 0.08)" }}>
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.461c-1.826 0-3.615-.49-5.181-1.417l-.371-.22-3.854.992 1.026-3.743-.243-.385C2.453 15.495 1.94 13.567 1.94 11.5c0-5.549 4.511-10.06 10.06-10.06 2.688 0 5.215 1.048 7.116 2.95 1.901 1.901 2.948 4.428 2.948 7.11 0 5.549-4.512 10.06-10.06 10.06m8.528-18.588C18.258 1.037 15.26 0 12.051 0 5.405 0 .004 5.399.004 12.045c0 2.12.553 4.19 1.603 6.01L0 24l6.096-1.599c1.765.962 3.755 1.47 5.955 1.47 6.645 0 12.046-5.4 12.046-12.046 0-3.21-1.249-6.228-3.518-8.497" />
+                    </svg>
+                  </span>
+                  <span className={styles.linkValue}>+94 71 201 6859</span>
+                </a>
                 <div className={styles.linkItem}>
                   <span className={styles.linkIcon}>
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
