@@ -116,6 +116,15 @@ export default function Projects({ type }: ProjectsProps) {
 
   const industryProjects: Project[] = [
     {
+      title: "DG Travels — A Premium Digital Travel Experience",
+      description:
+        "A sleek, responsive website for DG Travels, blending premium aesthetics with a seamless travel-booking experience across desktop and mobile. Built to showcase Sri Lanka with a focus on comfort, reliability, and personalized private transport.",
+      image: "/dg_travels.png",
+      tags: ["Web Application", "UI/UX Design", "Responsive Web", "Travel & Tourism"],
+      githubUrl: "",
+      liveUrl: "",
+    },
+    {
       title: "Sagacious ICE Factory Management System",
       description: "A modern, full-stack web application developed to centralize inventory monitoring, sales tracking, invoice processing, and customer debt records. Built with React and powered by Supabase, it supports PDF invoice exports, WhatsApp notifications, and business reporting.",
       image: "/saga_ice_photo.png",
